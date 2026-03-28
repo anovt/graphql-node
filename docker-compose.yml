@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "9000:4000"
+    volumes:
+      # Mount the current host directory (.) to the container's working directory (/app)
+      - .:/app
+      # Exclude node_modules from the bind mount to use the one installed inside the container
+      - /app/node_modules
+    environment:
+      # Use polling for consistent file watching across different OS/environments
+      - CHOKIDAR_USEPOLLING=true
