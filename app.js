@@ -79,6 +79,7 @@ app.use(express.json());
     topic,
     messages: [{ key: "node-kafka", value: message }],
   });
+  
 
   console.log(`Message sent → ${message}`);
   } catch (error) {
