@@ -79,7 +79,7 @@ app.use(express.json());
     topic,
     messages: [{ key: "node-kafka", value: message }],
   });
-  
+
 
   console.log(`Message sent → ${message}`);
   } catch (error) {
@@ -90,15 +90,15 @@ app.use(express.json());
 
 
   try {
-    await mongoose.connect(process.env.DB_CONNECTION_STRING);
+    await mongoose.connect('mongodb+srv://node-graphql-demo:ip9qMCtjy8g4Kadr@anvtdemo.habtrf3.mongodb.net/node-graphql-demo-db?appName=AnvtDemo');
     console.log("MongoDB Connected successfully");
   } catch (err) {
     console.error(err.message);
     process.exit(1); // Exit process with failure
   }
 
-  app.listen(4000, () => {
-    console.log("🚀 Server ready at http://localhost:4000/graphql");
+  app.listen(3000, () => {
+    console.log("🚀 Server ready at http://localhost:3000/graphql");
   });
 }
 
