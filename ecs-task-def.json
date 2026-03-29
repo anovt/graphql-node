@@ -1,86 +1,11 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:723769260800:task-definition/node-graphql-custer-task:1",
-    "containerDefinitions": [
-        {
-            "name": "node-graphql",
-            "image": "723769260800.dkr.ecr.us-east-1.amazonaws.com/node-graphql-app",
-            "cpu": 0,
-            "portMappings": [
-                {
-                    "name": "node-graphql-8080-tcp",
-                    "containerPort": 8080,
-                    "hostPort": 8080,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
-                }
-            ],
-            "essential": true,
-            "environment": [],
-            "environmentFiles": [],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "ulimits": [],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "/ecs/node-graphql-custer-task",
-                    "awslogs-create-group": "true",
-                    "awslogs-region": "us-east-2",
-                    "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
-            },
-            "systemControls": []
-        }
-    ],
-    "family": "node-graphql-custer-task",
-    "executionRoleArn": "arn:aws:iam::723769260800:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
-    "revision": 1,
-    "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
-        {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "ecs.capability.execution-role-ecr-pull"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "ecs.capability.task-eni"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
-        }
-    ],
-    "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE",
-        "MANAGED_INSTANCES"
-    ],
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
-    "cpu": "1024",
-    "memory": "3072",
-    "runtimePlatform": {
-        "cpuArchitecture": "X86_64",
-        "operatingSystemFamily": "LINUX"
-    },
-    "registeredAt": "2026-03-29T00:53:31.997Z",
-    "registeredBy": "arn:aws:iam::723769260800:user/aws-esc-user",
-    "tags": []
+  "name": "node-graphql",
+  "image": "723769260800.dkr.ecr.us-east-1.amazonaws.com/node-graphql-app",
+  "portMappings": [
+    {
+      "containerPort": 8080,
+      "protocol": "tcp"
+    }
+  ],
+  "essential": true
 }
