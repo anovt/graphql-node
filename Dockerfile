@@ -1,15 +1,11 @@
-# Use an official Node.js runtime as the base image
-FROM node:20-alpine
+FROM node:21-alpine
 
-# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install dependencies
+COPY package.json .
 RUN npm install
 
-# Command to run the application with nodemon
-# The code itself is not copied here, but mounted via docker-compose
+COPY . .
+
+EXPOSE 3000
 CMD ["npm", "start"]

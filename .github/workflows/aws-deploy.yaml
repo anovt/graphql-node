@@ -1,0 +1,40 @@
+name: Deploy to ECS
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build Docker image
+        run: docker build -t node-graphql .
+
+      - name: Tag image
+        run: docker tag node-graphql:latest 723769260800.dkr.ecr.us-east-2.amazonaws.com/node-graphql:latest
+
+      - name: Push image to ECR
+        run: docker push 723769260800.dkr.ecr.us-east-2.amazonaws.com/node-graphql:latest
+
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ecs-task-def.json
+          service: node-graphql-service
+          cluster: node-graphql-app-cluster
+          wait-for-service-stability: true
