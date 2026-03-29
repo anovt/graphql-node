@@ -97,8 +97,8 @@ app.use(express.json());
     process.exit(1); // Exit process with failure
   }
 
-  app.listen(3000, () => {
-    console.log("🚀 Server ready at http://localhost:3000/graphql");
+  app.listen(8080, () => {
+    console.log("🚀 Server ready at http://localhost:8080/graphql");
   });
 }
 
